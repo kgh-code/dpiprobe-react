@@ -4,6 +4,10 @@ import { useTable, useFilters, useGlobalFilter } from "react-table";
 
 
 
+// const columns = [{
+//   header: 'Age',
+//   footer: 'Total: ' + ageSum
+// }]
 
 const DefaultColumnFilter = ({column: { filterValue, preFilteredRows, setFilter }}) => {
   const count = preFilteredRows.length;
@@ -45,10 +49,16 @@ const GlobalFilter = ({
 
 function Table({ data }) {
 
+  // let ageSum = 0
+  // for (let i = 0; i <= data.length; i++) {
+  //   ageSum += data[i].dpi
+  // }
+  // ageSum = ageSum / data.length;
+
   const columns = useMemo(
     () => [
       {
-        Header: "DPI's For Query",
+        Header: "DPI's For Query  : ",
 
         columns: [
           {
@@ -99,6 +109,7 @@ function Table({ data }) {
     }),
     []
   );
+
 
   const {
     getTableProps,
@@ -153,7 +164,7 @@ function Table({ data }) {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr {...row.getRowProps()} >
               {row.cells.map(cell => {
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}

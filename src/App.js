@@ -12,6 +12,7 @@ import DeviceInput from "./components/DeviceInput";
 import SelectQueryType from "./components/SelectQueryType";
 import SelectQueryValOne from "./components/SelectQueryValOne";
 import SelectQueryValTwo from "./components/SelectQueryValTwo";
+import DpiCard from "./components/DpiCard";
 
 class App extends Component {
 
@@ -89,6 +90,11 @@ class App extends Component {
 
   render() {
         if(this.state.mode === 'view') {
+          if(this.state.deviceId.length > 0) {
+            return (
+              <DpiCard data={this.state.data} />
+            );
+          } else {
             return (
               <div className="App">
                   <div className="notification">
@@ -107,6 +113,7 @@ class App extends Component {
                   </div>
               </div>
             );
+          }
         } else {
           return (
             <div className="App">
