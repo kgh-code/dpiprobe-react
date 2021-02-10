@@ -48,21 +48,13 @@ class App extends Component {
             }
 
 //            http://localhost:8080/dpitreated/clients/9/690?filter=BETWEEN&val1=0&val2=10
-            //http://localhost:8080/dpitreated/clients/9/690
 
           } else {
             urls = urls.concat("clients/9");
           }
         }
         console.log(urls);
-        //
-        // let urls = "http://localhost:8080/dpitreated/";
-        // if (this.state.clientId.length > 0) {
-        //   urls = urls.concat("clients/"+this.state.clientId);
-        // }
-        // urls = urls.concat("?filter=BETWEEN&val1=0&val2=10");
 
-//        let result = await axios("http://localhost:8080/dpitreated/clients/9?filter=BETWEEN&val1=6&val2=9");
         let result = await axios(urls);
         this.setState({ querycount: querycount, data: result.data, mode: 'view' });
       })();
